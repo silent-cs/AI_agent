@@ -1,0 +1,617 @@
+و انميشنات ماظهرت في سيرفر flsk <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>s1lent - AI </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: fixed;
+            font-family: "Figtree", sans-serif;
+            background-image: url(dw.png);
+            /* background-color: black; */
+            /* color: #00ff00; */
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Scanning Line Effect */
+        .scan-line {
+            position: fixed;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffffff, transparent);
+            animation: scan 4s linear infinite;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.123);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #ffffff;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            /* text-shadow: 0 0 10px #00ff00; */
+            letter-spacing: 5px;
+        }
+
+        .status {
+            display: flex;
+            gap: 30px;
+            font-size: 12px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #181818;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 5px #ffffff; }
+            50% { opacity: 0.5; box-shadow: 0 0 15px #f8f8f8; }
+        }
+
+        /* Main Container */
+        .container {
+            margin-top: 100px;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Title */
+        .title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 50px;
+            color: #ffffff;
+            /* text-shadow: 0 0 20px #000000; */
+            /* letter-spacing: 8px; */
+            /* animation: glitchTitle 3s infinite; */
+        }
+        /* @keyframes glitchTitle {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 2px); }
+            94% { transform: translate(2px, -2px); }
+            96% { transform: translate(-2px, -2px); }
+            98% { transform: translate(2px, 2px); }
+        } */
+
+        /* Main Grid Layout */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Panel Style */
+        /* Location Markers */
+        /* .marker {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ff0000;
+            border: 2px solid #00ff00;
+            border-radius: 50%;
+            animation: markerPulse 2s ease-in-out infinite;
+            cursor: pointer;
+        } */
+
+        /* .marker1 { top: 20%; left: 60%; animation-delay: 0s; }
+        .marker2 { top: 40%; left: 30%; animation-delay: 0.5s; }
+        .marker3 { top: 60%; left: 70%; animation-delay: 1s; }
+
+        @keyframes markerPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 10px #ff0000;
+            }
+            50% { 
+                transform: scale(1.5);
+                box-shadow: 0 0 20px #ff0000;
+            }
+        } */
+
+        /* .marker::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #ff0000;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 2s ease-out infinite;
+        }
+
+        @keyframes ripple {
+            0% {
+                width: 12px;
+                height: 12px;
+                opacity: 1;
+            }
+            100% {
+                width: 50px;
+                height: 50px;
+                opacity: 0;
+            }
+        } */
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* .stat-box {
+            background: rgba(0, 50, 0, 0.5);
+            border: 1px solid #00ff00;
+            padding: 15px;
+            text-align: center;
+        } */
+
+        /* .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00ff00;
+            margin-bottom: 5px;
+        } */
+
+        .stat-label {
+            font-size: 10px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        /* Data List */
+        .data-list {
+            list-style: none;
+        }
+
+        .data-item {
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 50px;
+            /* background: rgba(19, 19, 19, 0.144); */
+            backdrop-filter: blur(15px);
+            border-left: 3px solid #ffffff;
+            box-shadow: 0 0 30px rgba(20, 20, 20, 0.3);
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Chat Interface */
+        
+        .chat-title {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        /* .chat-title::before,
+        .chat-title::after {
+            content: '///';
+            margin: 0 20px;
+            opacity: 0.5;
+        } */
+
+        textarea {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            padding: 10px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.199);
+            backdrop-filter: blur(10px);
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            font-family: "Figtree", sans-serif;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        textarea:focus {
+            outline: none;
+            box-shadow: 
+                inset 0 0 20px rgba(255, 255, 255, 0.2),
+                0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        textarea::placeholder {
+            color: #141414;
+        }
+
+        button {
+            position: absolute;
+            /* top: 10%; */
+            left: 37%;
+            bottom: -58px;
+            width: 400px; /* عرض الزر */
+            padding: 15px;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.05); /* لون خلفية خفيف */
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+            border: 2px solid #ffffff; /* لون الإطار */
+            border-radius: 55px; /* يجعل الحواف دائرية */
+            font-family: "Figtree", sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* ظل خفيف */
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        /* button:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            text-shadow: 0 0 10px #00ff00;
+        } */
+
+        .response-panel {
+            position: fixed;
+            top: 550px; /* المسافة من الأسفل */
+            left: 25%;
+            /* transform: translateX(-50%); */
+            width: 850px;
+            max-height: 300px; /* يحدد أقصى ارتفاع للرد */
+            overflow-y: auto; /* شريط تمرير للمحتوى الطويل */
+            padding: 30px;
+            border-radius: 25px;
+            background: rgba(7, 7, 7, 0.438);
+            backdrop-filter: blur(10px);
+            border: 2px solid #ffffff;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .response-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #fefffe;
+            text-transform: uppercase;
+        }
+
+        .response-title::before {
+            content: '> ';
+            color: #ff0000;
+        }
+
+        .response-text {
+            color: #00ff00;
+            line-height: 1.8;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+
+        /* Code-like lines */
+        .code-lines {
+            position: fixed;
+            top: 0;
+            right: 20px;
+            font-size: 10px;
+            color: rgba(0, 255, 0, 0.1);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .globe {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scan-line"></div>
+<!--     
+    <div class="code-lines">
+        01001000 01100101 01101100 01101100 01101111<br>
+        01010111 01101111 01110010 01101100 01100100<br>
+        01000001 01001001 00100000 01010011 01111001<br>
+        01110011 01110100 01100101 01101101 00100000<br>
+    </div> -->
+    <div class="header">
+        <div class="logo">S1LENT//AI</div>
+        <!-- <div class="status">
+            <div class="status-item">
+                <div class="status-dot"></div>
+                <span>SYSTEM ONLINE</span>
+            </div>
+            <div class="status-item">
+                <div class="status-dot"></div>
+                <span>AI ACTIVE</span>
+            </div>
+            <div class="status-item">
+                <div class="status-dot"></div>
+                <span>SECURE CONNECTION</span>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="container">
+        <div class="title"></div>
+        <div class="dashboard">
+            <!-- Left Panel -->
+            <div class="panel">
+                <div class="panel-title"></div>
+                <ul class="data-list">
+                    <!-- <li class="data-item">
+                        <span>CPU Usage</span>
+                        <span>67%</span>
+                    </li>
+                    <li class="data-item">
+                        <span>Memory</span>
+                        <span>8.2GB</span>
+                    </li>
+                    <li class="data-item">
+                        <span>Network</span>
+                        <span>1.2Mb/s</span>
+                    </li>
+                    <li class="data-item">
+                        <span>Processes</span>
+                        <span>247</span>
+                    </li> -->
+                    <li class="data-item">
+                        <span>Uptime</span>
+                        <span id="uptime">00:00:00</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Center - Globe -->
+            <!-- <div class="panel">
+                <div class="panel-title">/// Global Network</div>
+                <!-- <div class="globe-container">
+                    <div class="globe">
+                        <div class="marker marker1" title="Moscow"></div>
+                        <div class="marker marker2" title="Cairo"></div>
+                        <div class="marker marker3" title="New York"></div>
+                    </div>
+                </div> -->
+                <!-- <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="requests">0</div>
+                        <div class="stat-label">Requests</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="nodes">54</div>
+                        <div class="stat-label">Active Nodes</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                </div> -->
+            </div> -->
+
+            <!-- Right Panel -->
+            <div class="panel">
+                <!-- <div class="panel-title">/// Activity Log</div>
+                <ul class="data-list" id="activityLog">
+                    <li class="data-item">
+                        <span>[12:45:32]</span>
+                        <span>System Init</span>
+                    </li>
+                    <li class="data-item">
+                        <span>[12:45:34]</span>
+                        <span>AI Connected</span>
+                    </li>
+                    <li class="data-item">
+                        <span>[12:45:36]</span>
+                        <span>Database OK</span>
+                    </li>
+                    <li class="data-item">
+                        <span>[12:45:38]</span>
+                        <span>Ready...</span>
+                    </li>
+                </ul> -->
+            </div>
+
+            <!-- Chat Interface -->
+            <div class="chat-panel">
+                <div class="chat-title"></div>
+                <form method="post" id="chatForm">
+                    <textarea 
+                        name="user_input" 
+                        rows="5" 
+                        placeholder="                   ask anything"
+                        id="userInput"
+                        required
+                    ></textarea>
+                    <button type="submit" id="sendBtn">
+                        <span>[ EXECUTE QUERY ]</span>
+                    </button>
+                </form>
+            </div>
+
+            {% if response %}
+            <div class="response-panel">
+                <div class="response-title">AI Response Output</div>
+                <div class="response-text">{{response}}</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // Uptime Counter
+        let seconds = 0;
+        setInterval(() => {
+            seconds++;
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            document.getElementById('uptime').textContent = 
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }, 1000);
+
+        // Request Counter
+        let requestCount = 0;
+        function updateRequests() {
+            requestCount++;
+            document.getElementById('requests').textContent = requestCount;
+        }
+
+        // Activity Log
+        function addActivity(message) {
+            const log = document.getElementById('activityLog');
+            const time = new Date().toLocaleTimeString();
+            const item = document.createElement('li');
+            item.className = 'data-item';
+            item.innerHTML = `<span>[${time}]</span><span>${message}</span>`;
+            log.insertBefore(item, log.firstChild);
+            if (log.children.length > 6) {
+                log.removeChild(log.lastChild);
+            }
+        }
+
+        // Form submission
+        document.getElementById('chatForm').addEventListener('submit', function(e) {
+            updateRequests();
+            addActivity('Query Submitted');
+            document.getElementById('sendBtn').innerHTML = '<span>[ PROCESSING... ]</span>';
+        });
+
+        // Random data updates
+        setInterval(() => {
+            const nodes = document.getElementById('nodes');
+            nodes.textContent = Math.floor(Math.random() * 20) + 45;
+        }, 5000);
+
+        // Glitch effect on title
+        setInterval(() => {
+            const title = document.querySelector('.title');
+            title.style.textShadow = `
+                ${Math.random() * 5}px ${Math.random() * 5}px 10px #00ff00,
+                ${Math.random() * -5}px ${Math.random() * -5}px 10px #ff0000
+            `;
+            setTimeout(() => {
+                title.style.textShadow = '0 0 20px #00ff00';
+            }, 100);
+        }, 3000);
+
+        // Add random activity
+        const activities = [
+            'Neural Network Active',
+            'Data Processing',
+            'Security Scan OK',
+            'Cache Updated',
+            'Optimization Complete'
+        ];
+
+        setInterval(() => {
+            const activity = activities[Math.floor(Math.random() * activities.length)];
+            addActivity(activity);
+        }, 8000);
+    </script>
+</body>
+</html>
