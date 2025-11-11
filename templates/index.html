@@ -15,8 +15,6 @@
             position: fixed;
             font-family: "Figtree", sans-serif;
             background-image: url(dw.png);
-            /* background-color: black; */
-            /* color: #00ff00; */
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
@@ -116,17 +114,7 @@
             font-size: 48px;
             margin-bottom: 50px;
             color: #ffffff;
-            /* text-shadow: 0 0 20px #000000; */
-            /* letter-spacing: 8px; */
-            /* animation: glitchTitle 3s infinite; */
         }
-        /* @keyframes glitchTitle {
-            0%, 90%, 100% { transform: translate(0); }
-            92% { transform: translate(-2px, 2px); }
-            94% { transform: translate(2px, -2px); }
-            96% { transform: translate(-2px, -2px); }
-            98% { transform: translate(2px, 2px); }
-        } */
 
         /* Main Grid Layout */
         .dashboard {
@@ -135,61 +123,6 @@
             gap: 30px;
             margin-bottom: 40px;
         }
-
-        /* Panel Style */
-        /* Location Markers */
-        /* .marker {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: #ff0000;
-            border: 2px solid #00ff00;
-            border-radius: 50%;
-            animation: markerPulse 2s ease-in-out infinite;
-            cursor: pointer;
-        } */
-
-        /* .marker1 { top: 20%; left: 60%; animation-delay: 0s; }
-        .marker2 { top: 40%; left: 30%; animation-delay: 0.5s; }
-        .marker3 { top: 60%; left: 70%; animation-delay: 1s; }
-
-        @keyframes markerPulse {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: 0 0 10px #ff0000;
-            }
-            50% { 
-                transform: scale(1.5);
-                box-shadow: 0 0 20px #ff0000;
-            }
-        } */
-
-        /* .marker::after {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border: 2px solid #ff0000;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: ripple 2s ease-out infinite;
-        }
-
-        @keyframes ripple {
-            0% {
-                width: 12px;
-                height: 12px;
-                opacity: 1;
-            }
-            100% {
-                width: 50px;
-                height: 50px;
-                opacity: 0;
-            }
-        } */
-
         /* Stats */
         .stats {
             display: grid;
@@ -197,20 +130,6 @@
             gap: 15px;
             margin-bottom: 20px;
         }
-
-        /* .stat-box {
-            background: rgba(0, 50, 0, 0.5);
-            border: 1px solid #00ff00;
-            padding: 15px;
-            text-align: center;
-        } */
-
-        /* .stat-value {
-            font-size: 28px;
-            font-weight: bold;
-            color: #00ff00;
-            margin-bottom: 5px;
-        } */
 
         .stat-label {
             font-size: 10px;
@@ -258,14 +177,6 @@
             text-transform: uppercase;
             letter-spacing: 4px;
         }
-
-        /* .chat-title::before,
-        .chat-title::after {
-            content: '///';
-            margin: 0 20px;
-            opacity: 0.5;
-        } */
-
         textarea {
             position: absolute;
             top: 80%;
@@ -300,14 +211,14 @@
             /* top: 10%; */
             left: 37%;
             bottom: -58px;
-            width: 400px; /* عرض الزر */
+            width: 400px; 
             padding: 15px;
             margin-top: 20px;
-            background: rgba(255, 255, 255, 0.05); /* لون خلفية خفيف */
+            background: rgba(255, 255, 255, 0.05); 
             backdrop-filter: blur(10px);
             color: #ffffff;
-            border: 2px solid #ffffff; /* لون الإطار */
-            border-radius: 55px; /* يجعل الحواف دائرية */
+            border: 2px solid #ffffff; 
+            border-radius: 55px;
             font-family: "Figtree", sans-serif;
             font-size: 18px;
             font-weight: bold;
@@ -317,7 +228,7 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* ظل خفيف */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
         
         button::before {
@@ -335,19 +246,14 @@
             left: 100%;
         }
 
-        /* button:hover {
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
-            text-shadow: 0 0 10px #00ff00;
-        } */
-
         .response-panel {
             position: fixed;
-            top: 550px; /* المسافة من الأسفل */
+            top: 550px; 
             left: 25%;
             /* transform: translateX(-50%); */
             width: 850px;
-            max-height: 300px; /* يحدد أقصى ارتفاع للرد */
-            overflow-y: auto; /* شريط تمرير للمحتوى الطويل */
+            max-height: 300px; 
+            overflow-y: auto;
             padding: 30px;
             border-radius: 25px;
             background: rgba(7, 7, 7, 0.438);
@@ -412,29 +318,8 @@
 </head>
 <body>
     <div class="scan-line"></div>
-<!--     
-    <div class="code-lines">
-        01001000 01100101 01101100 01101100 01101111<br>
-        01010111 01101111 01110010 01101100 01100100<br>
-        01000001 01001001 00100000 01010011 01111001<br>
-        01110011 01110100 01100101 01101101 00100000<br>
-    </div> -->
     <div class="header">
         <div class="logo">S1LENT//AI</div>
-        <!-- <div class="status">
-            <div class="status-item">
-                <div class="status-dot"></div>
-                <span>SYSTEM ONLINE</span>
-            </div>
-            <div class="status-item">
-                <div class="status-dot"></div>
-                <span>AI ACTIVE</span>
-            </div>
-            <div class="status-item">
-                <div class="status-dot"></div>
-                <span>SECURE CONNECTION</span>
-            </div>
-        </div> -->
     </div>
 
     <div class="container">
@@ -444,79 +329,14 @@
             <div class="panel">
                 <div class="panel-title"></div>
                 <ul class="data-list">
-                    <!-- <li class="data-item">
-                        <span>CPU Usage</span>
-                        <span>67%</span>
-                    </li>
-                    <li class="data-item">
-                        <span>Memory</span>
-                        <span>8.2GB</span>
-                    </li>
-                    <li class="data-item">
-                        <span>Network</span>
-                        <span>1.2Mb/s</span>
-                    </li>
-                    <li class="data-item">
-                        <span>Processes</span>
-                        <span>247</span>
-                    </li> -->
+                    
                     <li class="data-item">
                         <span>Uptime</span>
                         <span id="uptime">00:00:00</span>
                     </li>
                 </ul>
             </div>
-
-            <!-- Center - Globe -->
-            <!-- <div class="panel">
-                <div class="panel-title">/// Global Network</div>
-                <!-- <div class="globe-container">
-                    <div class="globe">
-                        <div class="marker marker1" title="Moscow"></div>
-                        <div class="marker marker2" title="Cairo"></div>
-                        <div class="marker marker3" title="New York"></div>
-                    </div>
-                </div> -->
-                <!-- <div class="stats">
-                    <div class="stat-box">
-                        <div class="stat-value" id="requests">0</div>
-                        <div class="stat-label">Requests</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value" id="nodes">54</div>
-                        <div class="stat-label">Active Nodes</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value">99.9%</div>
-                        <div class="stat-label">Uptime</div>
-                    </div>
-                </div> -->
             </div> -->
-
-            <!-- Right Panel -->
-            <div class="panel">
-                <!-- <div class="panel-title">/// Activity Log</div>
-                <ul class="data-list" id="activityLog">
-                    <li class="data-item">
-                        <span>[12:45:32]</span>
-                        <span>System Init</span>
-                    </li>
-                    <li class="data-item">
-                        <span>[12:45:34]</span>
-                        <span>AI Connected</span>
-                    </li>
-                    <li class="data-item">
-                        <span>[12:45:36]</span>
-                        <span>Database OK</span>
-                    </li>
-                    <li class="data-item">
-                        <span>[12:45:38]</span>
-                        <span>Ready...</span>
-                    </li>
-                </ul> -->
-            </div>
-
-            <!-- Chat Interface -->
             <div class="chat-panel">
                 <div class="chat-title"></div>
                 <form method="post" id="chatForm">
